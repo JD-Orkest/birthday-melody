@@ -368,13 +368,11 @@ const downloadImage = async (imageSrc: string) => {
     right: 0;
     bottom: 0;
     height: 100dvh;
-    background: transparent;
+    background: #000;
     z-index: 9999;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
   }
 
   &__detail-header {
@@ -491,12 +489,15 @@ const downloadImage = async (imageSrc: string) => {
     height: 100%;
     z-index: 0;
     overflow: hidden;
+    opacity: 0.5;
     
     &::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
   }
 
@@ -504,8 +505,7 @@ const downloadImage = async (imageSrc: string) => {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: blur(30px);
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 
   &__detail-image-wrapper {
