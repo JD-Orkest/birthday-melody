@@ -376,10 +376,8 @@ const downloadImage = async (imageSrc: string) => {
   }
 
   &__detail-header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    position: relative;
+    width: 100%;
     height: 64px;
     background: transparent;
     display: flex;
@@ -387,10 +385,12 @@ const downloadImage = async (imageSrc: string) => {
     justify-content: space-between;
     padding: 0 var(--spacing-md);
     z-index: 10;
+    flex-shrink: 0;
     
     @media (max-width: 640px) {
       height: 56px;
       padding: 0 var(--spacing-sm);
+      margin-top: env(safe-area-inset-top);
     }
   }
 
@@ -468,17 +468,10 @@ const downloadImage = async (imageSrc: string) => {
 
   &__detail-content {
     width: 100%;
-    height: 100%;
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    touch-action: pan-y;
-    user-select: none;
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
+    min-height: 0;
   }
 
   &__detail-background {
@@ -490,6 +483,7 @@ const downloadImage = async (imageSrc: string) => {
     z-index: 0;
     overflow: hidden;
     opacity: 0.5;
+    pointer-events: none;
     
     &::after {
       content: '';
@@ -509,40 +503,46 @@ const downloadImage = async (imageSrc: string) => {
   }
 
   &__detail-image-wrapper {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    transition: transform 0.2s ease-out;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 0;
+    padding: var(--spacing-md);
+    padding-bottom: 80px; /* Espace pour la légende */
     z-index: 1;
+    transition: transform 0.2s ease-out;
+    
+    @media (max-width: 640px) {
+      padding: var(--spacing-sm);
+      padding-bottom: 100px; /* Plus d'espace sur mobile pour la légende */
+    }
   }
 
   &__detail-image {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
     object-fit: contain;
     pointer-events: none;
     position: relative;
     z-index: 2;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
   }
 
   &__detail-info {
-    width: 100%;
-    text-align: center;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 10;
     padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 60%, transparent 100%);
+    text-align: center;
+    pointer-events: none;
     
     @media (max-width: 640px) {
       padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
