@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted } from 'vue'
+import { computed, ref, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { GALLERY } from '@/data/content'
 
@@ -16,6 +16,18 @@ const currentImage = computed(() => images.value[index.value])
 
 // État pour l'animation
 const direction = ref<'next' | 'prev'>('next')
+
+// Surveiller les changements d'index pour la direction de l'animation
+watch(
+  () => route.params.index,
+  (newIndex, oldIndex) => {
+    const current = parseInt(newIndex as string)
+    const previous = parseInt(oldIndex as string)
+    if (!isNaN(current) && !isNaN(previous)) {
+      direction.value = current > previous ? 'next' : 'prev'
+    }
+  }
+)
 
 // Navigation
 const close = () => {
@@ -255,8 +267,8 @@ const downloadImage = async () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--spacing-sm);
     perspective: 1000px;
+    position: relative;
   }
 
   &__img {
@@ -264,6 +276,8 @@ const downloadImage = async () => {
     max-height: 100%;
     object-fit: contain;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    padding: var(--spacing-sm);
+    will-change: transform;
   }
 
   &__nav {
@@ -320,7 +334,7 @@ const downloadImage = async () => {
 .slide-left-leave-active,
 .slide-right-enter-active,
 .slide-right-leave-active {
-  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   position: absolute;
   width: 100%;
   height: 100%;

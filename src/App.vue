@@ -17,7 +17,10 @@ const isPhotoView = computed(() => route.name === 'PhotoView')
     <main class="app-main">
       <router-view v-slot="{ Component, route }">
         <transition :name="(route.meta.transition as string) || 'fade'" mode="out-in">
-          <component :is="Component" :key="route.path" />
+          <component 
+            :is="Component" 
+            :key="route.name === 'PhotoView' ? 'PhotoView' : route.path" 
+          />
         </transition>
       </router-view>
     </main>
