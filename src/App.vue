@@ -1,13 +1,18 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 import AppHeader from '@/components/layout/AppHeader.vue'
 import AppFooter from '@/components/layout/AppFooter.vue'
 import ZodiacBackground from '@/components/background/ZodiacBackground.vue'
+
+const route = useRoute()
+const isPhotoView = computed(() => route.name === 'PhotoView')
 </script>
 
 <template>
   <div id="app">
     <ZodiacBackground />
-    <AppHeader />
+    <AppHeader v-if="!isPhotoView" />
     
     <main class="app-main">
       <router-view v-slot="{ Component, route }">
@@ -17,7 +22,7 @@ import ZodiacBackground from '@/components/background/ZodiacBackground.vue'
       </router-view>
     </main>
     
-    <AppFooter />
+    <AppFooter v-if="!isPhotoView" />
   </div>
 </template>
 

@@ -57,6 +57,15 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
+    path: '/photo/:category/:index',
+    name: 'PhotoView',
+    component: () => import('@/pages/PhotoView.vue'),
+    meta: {
+      title: 'Photo - Anniversaire Melo',
+      transition: 'fade'
+    }
+  },
+  {
     path: '/:pathMatch(.*)*',
     redirect: '/'
   }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import Tabs from '@/components/molecules/Tabs.vue'
-import ImageViewer from '@/components/organisms/ImageViewer.vue'
 import type { GalleryImages } from '@/data/content'
 
 interface GalleryProps {
@@ -9,10 +9,9 @@ interface GalleryProps {
 }
 
 const props = defineProps<GalleryProps>()
+const router = useRouter()
 
 const currentTab = ref<'elle' | 'nous' | 'eux'>('elle')
-const selectedIndex = ref<number>(0)
-const isViewerOpen = ref(false)
 
 const tabs = [
   { id: 'elle', label: 'Toi' },
@@ -20,37 +19,18 @@ const tabs = [
   { id: 'eux', label: 'Eux' }
 ]
 
-const currentImages = computed(() => {
-  return props.images[currentTab.value] || []
-})
-
-const selectedImage = computed(() => {
-  return currentImages.value[selectedIndex.value]
-})
-
 const handleTabChange = (tabId: string) => {
   currentTab.value = tabId as 'elle' | 'nous' | 'eux'
 }
 
 const openViewer = (index: number) => {
-  selectedIndex.value = index
-  isViewerOpen.value = true
-}
-
-const closeViewer = () => {
-  isViewerOpen.value = false
-}
-
-const nextImage = () => {
-  if (selectedIndex.value < currentImages.value.length - 1) {
-    selectedIndex.value++
-  }
-}
-
-const prevImage = () => {
-  if (selectedIndex.value > 0) {
-    selectedIndex.value--
-  }
+  router.push({
+    name: 'PhotoView',
+    params: {
+      category: currentTab.value,
+      index: index.toString()
+    }
+  })
 }
 </script>
 
@@ -126,17 +106,6 @@ const prevImage = () => {
         </template>
       </Tabs>
     </div>
-
-    <ImageViewer
-      :is-open="isViewerOpen"
-      :image-src="selectedImage?.src"
-      :caption="selectedImage?.caption"
-      :current-index="selectedIndex"
-      :total-images="currentImages.length"
-      @close="closeViewer"
-      @next="nextImage"
-      @prev="prevImage"
-    />
   </div>
 </template>
 
