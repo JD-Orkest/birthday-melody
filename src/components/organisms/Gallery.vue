@@ -8,7 +8,7 @@ interface GalleryProps {
   images: GalleryImages
 }
 
-const props = defineProps<GalleryProps>()
+defineProps<GalleryProps>()
 const router = useRouter()
 
 const currentTab = ref<'elle' | 'nous' | 'eux'>('elle')
