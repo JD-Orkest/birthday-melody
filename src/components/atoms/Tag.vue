@@ -4,7 +4,7 @@ interface TagProps {
   size?: 'sm' | 'md'
 }
 
-const props = withDefaults(defineProps<TagProps>(), {
+withDefaults(defineProps<TagProps>(), {
   variant: 'default',
   size: 'md'
 })

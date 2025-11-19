@@ -4,7 +4,6 @@ import { useRouter } from 'vue-router'
 import { useProgressStore } from '@/store/useProgress'
 import CardEtape from '@/components/molecules/CardEtape.vue'
 import Tag from '@/components/atoms/Tag.vue'
-import Button from '@/components/atoms/Button.vue'
 import { STEPS_INFO } from '@/data/content'
 import { enterPage, staggerReveal } from '@/composables/useMotion'
 

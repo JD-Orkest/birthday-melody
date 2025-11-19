@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import Tabs from '@/components/molecules/Tabs.vue'
-import type { GalleryImages, GalleryImage } from '@/data/content'
+import type { GalleryImages } from '@/data/content'
 
 interface GalleryProps {
   images: GalleryImages
