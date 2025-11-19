@@ -86,10 +86,18 @@ const handleKeydown = (e: KeyboardEvent) => {
 
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown)
+  // Empêcher le scroll du body quand la visionneuse est ouverte
+  document.body.style.overflow = 'hidden'
+  document.body.style.position = 'fixed'
+  document.body.style.width = '100%'
 })
 
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeydown)
+  // Restaurer le scroll
+  document.body.style.overflow = ''
+  document.body.style.position = ''
+  document.body.style.width = ''
 })
 </script>
 
@@ -162,10 +170,12 @@ onUnmounted(() => {
 .viewer {
   position: fixed;
   inset: 0;
+  height: 100dvh; /* Utilisation de dvh pour s'adapter aux barres mobiles */
   z-index: 9999;
   display: flex;
   flex-direction: column;
   background: #000;
+  overscroll-behavior: none; /* Empêche le rebond élastique sur iOS */
 
   // Arrière-plan
   &__bg {
