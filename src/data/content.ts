@@ -187,7 +187,11 @@ export const GALLERY: GalleryImages = {
     { src: import.meta.env.BASE_URL + 'img/eux22.JPEG', caption: 'Après nos retrouvailles, 6 ans plus tard, nos connexions se traduisent même dans nos vêtements ! #Tiph' },
     { src: import.meta.env.BASE_URL + 'img/eux23.JPEG', caption: 'Nos premières vacances ensemble, à 3. Qui se clôturera sur notre mantra "Gratitude". Des vacances mémorables, parmi les meilleures vacances de ma vie. Même si tu as vomi dans la clim de la voiture. #Tiph' },
     { src: import.meta.env.BASE_URL + 'img/eux24.jpg', caption: 'En dehors des voyages, tu rends chaque moment mémorable. Je pense qu’en ta présence, pas une seule fois je n’ai fait autre chose que rire aux éclats, ou au minimum sourire… même après une rupture ou un pneu crevé. #Tiph' },
-    { src: import.meta.env.BASE_URL + 'img/eux25.jpg', caption: 'Tu es le genre de star qui encourage ses amies à partager son projecteur, voire faire en sorte que tous les projecteurs soit sur ces amies. #Tiph' }
+    { src: import.meta.env.BASE_URL + 'img/eux25.jpg', caption: 'Tu es le genre de star qui encourage ses amies à partager son projecteur, voire faire en sorte que tous les projecteurs soit sur ces amies. #Tiph' },
+    { src: import.meta.env.BASE_URL + 'img/eux26.jpeg', caption: 'En 2020, pendant que d\'autres pleuraient pour sortir durant le confinement, nous avons vécu le meilleur moment et plus magique en famille. Là nous étions plus unis que jamais. Surtout lors des soirées apérooo #Maman #Rachel #Matt #Meddy #Nolan' },
+    { src: import.meta.env.BASE_URL + 'img/eux27.jpeg', caption: 'Alala la belle époque où les 2 icônes de la famille étaient réunies sous le même toit, quelle satisfaction quand je pouvais encore expérimenter mes soins beauté à base de peau de concombres sur ta face! Même si ça n’a pas bien fonctionné… Pas grave ta petite sœur chérie (la star) viendra toujours faire des masques (des vrai) avec toi! #Rachel' },
+    { src: import.meta.env.BASE_URL + 'img/eux28.jpeg', caption: 'Faut avouer que nous 3 sur une photo, on a vraiment des têtes de cul (APART MOI). Mais quel beau trio!!! #Rachel' },
+    { src: import.meta.env.BASE_URL + 'img/eux29.jpeg', caption: 'Après m\'avoir forcé à nettoyer la terrasse parce que Tiph venait. La journée CALIENTE à pu commencer! Souviens toi de l\'été dernier (l\'eau froide de la piscine) #Rachel' },
   ]
 }
 
