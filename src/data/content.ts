@@ -321,7 +321,7 @@ export const STEPS_INFO = [
     id: 4,
     title: 'Nos mots partagés',
     subtitle: 'Les conversations qui durent',
-    hint: 'Va là où même les princesses frottent pour que la magie opère, tu trouveras la suite dans le coin où Cendrillon planquerait son seau.',
+    hint: 'Cherche l’endroit où la magie se fait en douce, là où même les princesses rangent éponges et seaux. Cendrillon cacherait sûrement le sien juste en dessous…',
     icon: 'comments'
   },
   {
